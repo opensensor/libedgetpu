@@ -32,14 +32,27 @@ LIBEDGETPU_LDFLAGS := \
 	-Wl,--version-script=$(BUILDROOT)/tflite/public/libedgetpu.lds \
 	-fuse-ld=gold \
 	-lflatbuffers \
-	-labsl_flags \
+	-labsl_flags_commandlineflag \
+	-labsl_flags_commandlineflag_internal \
+	-labsl_flags_config \
 	-labsl_flags_internal \
 	-labsl_flags_reflection \
 	-labsl_flags_marshalling \
+	-labsl_flags_private_handle_accessor \
+	-labsl_flags_program_name \
 	-labsl_hash \
 	-labsl_hashtablez_sampler \
 	-labsl_raw_hash_set \
 	-labsl_str_format_internal \
+	-labsl_strings \
+	-labsl_synchronization \
+	-labsl_time \
+	-labsl_base \
+	-labsl_spinlock_wait \
+	-labsl_raw_logging_internal \
+	-labsl_log_internal_check_op \
+	-labsl_log_internal_message \
+	-labsl_bad_optional_access \
 	-lusb-1.0
 
 LIBEDGETPU_FLATC_SRCS := \
@@ -59,10 +72,11 @@ LIBEDGETPU_INCLUDES := \
 	$(BUILDDIR)/$(BUILDROOT)
 LIBEDGETPU_INCLUDES := $(addprefix -I,$(LIBEDGETPU_INCLUDES))
 
-LIBEDGETPU_CSRCS := $(TFROOT)/tensorflow/lite/c/common.c
+LIBEDGETPU_CSRCS :=
 LIBEDGETPU_COBJS := $(call TOBUILDDIR,$(patsubst %.c,%.o,$(LIBEDGETPU_CSRCS)))
 
 LIBEDGETPU_CCSRCS := \
+	$(TFROOT)/tensorflow/lite/core/c/common.cc \
 	$(BUILDROOT)/api/allocated_buffer.cc \
 	$(BUILDROOT)/api/buffer.cc \
 	$(BUILDROOT)/api/driver_options_helper.cc \

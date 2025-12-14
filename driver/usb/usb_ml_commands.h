@@ -15,6 +15,8 @@
 #ifndef DARWINN_DRIVER_USB_USB_ML_COMMANDS_H_
 #define DARWINN_DRIVER_USB_USB_ML_COMMANDS_H_
 
+#include <cstdint>
+
 #include "driver/usb/usb_device_interface.h"
 #include "driver/usb/usb_standard_commands.h"
 

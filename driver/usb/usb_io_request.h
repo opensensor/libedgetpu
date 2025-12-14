@@ -15,6 +15,7 @@
 #ifndef DARWINN_DRIVER_USB_USB_IO_REQUEST_H_
 #define DARWINN_DRIVER_USB_USB_IO_REQUEST_H_
 
+#include <cstdint>
 #include <vector>
 
 #include "driver/device_buffer.h"
